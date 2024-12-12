@@ -129,6 +129,11 @@ namespace GettingStarted
         private async void ExecuteRetryCommand(object obj)
         {
             var request = (obj as AssistItem).RequestItem;
+            IAssistItem item = (obj as AssistItem).RequestItem as IAssistItem;
+            if (item != null)
+            {
+                request = item;
+            }
             await this.GetResult(request).ConfigureAwait(true);
         }
 
